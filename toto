@@ -1,0 +1,10 @@
+description "Tor - "
+version "1.0"
+author "Corentin Merot"
+
+env PATH=/bin:/usr/bin:/usr/local/bin
+
+respawn
+start on runlevel [23]
+
+exec /usr/sbin/tor --SocksPort 10 --NewCircuitPeriod 120 --DataDirectory /var/lib/tor/10
