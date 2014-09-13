@@ -1,8 +1,13 @@
 HAproxy + Polipo + Tor = Hapotor
 =============================================================================
 
-I used to use [mattes/rotating-proxy][https://github.com/mattes/rotating-proxy]
+I used to use [mattes/rotating-proxy](https://github.com/mattes/rotating-proxy)
 before creating this repo. Config and ideas come from there.
+
+The difference is that those scripts will generate and manage upstart jobs.
+
+I've also added another instance of Polipo with cache enabled on top of HAproxy
+to let me query cold web services and cache responses.
 
 Synopsis
 -----------------------------------------------------------------------------
@@ -11,14 +16,16 @@ Anonymous and cache proxy with rotating IPs
 
     Polipo:5567 --> HAProxy:5566 --> Polipo:20001 --> Tor:10001
                                  --> Polipo:20002 --> Tor:10002
-                                 --> etc ...
+         ^               ^       --> etc ...
+         |               |
+       client          client
 
 Install
 -----------------------------------------------------------------------------
 
 Install system dependencies:
 
-    $ `bin/install-dependencies.sh`.
+    $ ./bin/install-dependencies.sh
 
 Deploy upstart jobs with the script `bin/deploy-hapotor.sh`:
 
