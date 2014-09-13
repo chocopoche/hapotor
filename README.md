@@ -9,6 +9,8 @@ The difference is that those scripts will generate and manage upstart jobs.
 I've also added another instance of Polipo with cache enabled on top of HAproxy
 to let me query cold web services and cache responses.
 
+Warning: Depending on your network environement, you may end up with a wide open proxy.
+
 Synopsis
 -----------------------------------------------------------------------------
 
