@@ -61,7 +61,7 @@ sudo tee /etc/init/polipo-5567.conf > /dev/null <<-EOF
 	respawn
 	start on runlevel [23]
 
-	exec polipo parentProxy=127.0.0.1:5566 proxyPort=5567
+	exec polipo proxAddress=0.0.0.0 parentProxy=127.0.0.1:5566 proxyPort=5567
 EOF
 sudo service polipo-5567 start
 
